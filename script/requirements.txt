@@ -1,0 +1,42 @@
+# ============================================================
+#  影视智能推荐系统 —— 算法层依赖清单
+#  环境：Python 3.14 / Windows x64
+#  安装：pip install -r requirements.txt
+#  国内加速（推荐）：pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
+# ============================================================
+
+# ---------- 核心依赖（两个脚本都要用） ----------
+numpy>=2.1.0            # 数值计算
+pandas>=2.2.0           # 读取 ratings.dat / 导出 CSV
+
+# ---------- ncf_train.py 专用 ----------
+# 版本下限 2.12.0 是硬要求：torch 从 2.12.0 起才提供 Python 3.14 的 cp314 wheel
+torch>=2.12.0
+
+# ---------- baseline_surprise.py 专用 ----------
+# 1.1.5 提供 Windows(py3.10~3.14) 的 win_amd64 wheel，可直接 pip 安装
+# 若该版本装不上，会退回源码编译并要求 C 编译器 —— 届时改跑 ncf_train.py 即可
+scikit-surprise>=1.1.5
+
+
+# ---------- 测试 ----------
+pytest>=8.0.0
+
+
+# ============================================================
+#  可选（当前脚本未直接 import，按需再装）
+# ============================================================
+# matplotlib>=3.9.0     # 画对比柱状图 / 训练曲线
+# scikit-learn>=1.9.0   # 若后续需要额外的评估指标或数据划分工具
+
+
+# ============================================================
+#  已知坑（踩过就记在这）
+# ============================================================
+# 1. 装 torch 不要用清华源（没有 cp314 wheel，会报
+#    "Could not find a version that satisfies the requirement torch"）。
+#    用阿里源：-i https://mirrors.aliyun.com/pypi/simple
+# 2. 想确认某版本是否可取用：
+#    pip index versions torch -i https://mirrors.aliyun.com/pypi/simple
+# 3. 如果冷门库在 3.14 上装不动，退路是 conda create -n rec python=3.12
+# ============================================================

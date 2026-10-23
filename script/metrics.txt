@@ -1,0 +1,1 @@
+NeuMF  HR@10=0.6680  NDCG@10=0.3880  best_epoch=6  epochs=20  dim=32  neg_ratio=4  seed=42

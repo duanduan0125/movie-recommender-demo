@@ -1,0 +1,28 @@
+# ---------- 密钥与本地配置 ----------
+.llm_api_key
+.env
+*.env
+application-local.yml
+
+# ---------- 实验缓存 ----------
+.llm_rerank_cache.jsonl
+
+# ---------- 大体积产物（可重新生成） ----------
+*.pt
+*.pth
+*.ckpt
+*.mp4
+*.mov
+*.avi
+
+# ---------- 数据集 ----------
+ml-1m/
+
+# ---------- Python ----------
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# ---------- 系统文件 ----------
+.DS_Store
+Thumbs.db
